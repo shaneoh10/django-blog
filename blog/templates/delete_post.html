@@ -1,26 +1,29 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    | Add a new post
+    | Delete post
 {% endblock %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
 
-    <h1>Add a Post</h1>
+    <h1>Delete Post</h1>
 
+    <br>
+    <h3>Delete: <em>{{ post.title }}</em></h3>
     <br>
 
     <div class="form-group">
         <form action="" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-secondary">Post</button>
+            <strong>Are you sure?!</strong>
+            <br>
+            <button type="submit" class="btn btn-secondary">Delete Post</button>
         </form>
     </div>
 
-{% else %}
+{% else %} 
 
 <h1 class="mt-5 text-center">You're not allowed here!</h1>
 
