@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Blog Posts</h1>
+{% if category_posts %}
+
+<h1>{{ cats }}</h1>
 <hr class="mb-4">
+
 <ul>
-    {% for post in object_list %}
+    {% for post in category_posts %}
     <li class="mb-3">
-        <a href="{% url 'article' post.pk %}">{{ post.title }}</a> - <a href="{% url 'category' post.category %}">{{ post.category }}</a> - @{{ post.author }} - {{ post.post_date }}
+        <a href="{% url 'article' post.pk %}">{{ post.title }}</a> - {{ post.category }} - @{{ post.author }} - {{ post.post_date }}
         {% if user.is_authenticated %}
             <small>
                 -
@@ -19,5 +22,12 @@
     </li>
     {% endfor %}
 </ul>
+
+{% else %} 
+
+<h2>Sorry, this category doesn't exist</h2>
+
+{% endif %}
+
 
 {% endblock %}
