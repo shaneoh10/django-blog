@@ -20,6 +20,11 @@
         </form>
     </div>
 
+    <script>
+        var name = '{{ user.id }}';
+        document.getElementById('user').value = name;
+    </script>
+
 {% else %}
 
 <h1 class="mt-5 text-center">You're not allowed here!</h1>
