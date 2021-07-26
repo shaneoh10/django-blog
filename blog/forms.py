@@ -7,7 +7,7 @@ choices = Category.objects.all().values_list('name', 'name')
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag', 'author', 'category', 'body', 'snippet')
+        fields = ('title', 'title_tag', 'author', 'category', 'body', 'snippet', 'header_image')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),

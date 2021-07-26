@@ -18,6 +18,10 @@
     <hr>
     <br>
 
+    {% if post.header_image %}
+        <img src="{{ post.header_image.url }}" alt="">
+    {% endif %}
+
     <p>{{ post.body|safe }}</p>
     <br>
 
