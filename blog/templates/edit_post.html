@@ -8,17 +8,25 @@
 
 {% if user.is_authenticated %}
 
-    <h1>Edit Post</h1>
+    {% if user.id == post.author.id %}
 
-    <br>
+        <h1>Edit Post</h1>
 
-    <div class="form-group">
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-secondary">Post</button>
-        </form>
-    </div>
+        <br>
+
+        <div class="form-group">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-secondary">Post</button>
+            </form>
+        </div>
+
+    {% else %}
+
+        <h1 class="mt-5 text-center">You're not allowed here!</h1>
+    
+    {% endif %}
 
 {% else %}
 
