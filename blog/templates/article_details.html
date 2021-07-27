@@ -67,6 +67,23 @@
     </div>
 
     <br>
-    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+    <h2>Comments</h2>
+    <br>
+    {% if not post.comments.all %}
+        <p>There are no comments...</p>
+        <a href="{% url 'add_comment' post.pk %}">Add a comment</a>
+    {% else %}
+        <a href="{% url 'add_comment' post.pk %}">Add a comment..</a>
+        <br>
+        <br>
+        {% for comment in post.comments.all %}
+            <strong>{{ comment.name }} - 
+            {{ comment.date_added }}</strong>
+            <br>
+            {{ comment.body }}
+            <br>
+            <br>
+        {% endfor %}
+    {% endif %}
 
 {% endblock %}
